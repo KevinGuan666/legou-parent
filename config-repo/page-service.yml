@@ -1,0 +1,30 @@
+server:
+  port: 9008
+
+spring:
+  rabbitmq:
+    host: 110.42.216.234
+    port: 5672
+
+mq:
+  item:
+    exchange:
+      update: exchange.update.item
+    queue:
+      update: queue.update.item
+    routing:
+      key: routing.update.item
+
+logging:
+  #file: demo.log
+  pattern:
+    console: "%d - %msg%n"
+  level:
+    org.springframework.web: debug
+    com.kkb: debug
+
+#security:
+  #oauth2:
+    #resource:
+      #jwt:
+        #key-uri: http://localhost:9098/oauth/token_key #如果使用JWT，可以获取公钥用 于 token 的验签

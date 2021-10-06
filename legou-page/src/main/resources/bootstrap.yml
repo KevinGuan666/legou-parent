@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: page-service
+
+# 生成静态页的位置
+pagepath: /Users/guanyihang/Desktop/开课吧/第十六章(实战项目训练)/商品详情页静态化/pages

@@ -1,0 +1,32 @@
+server:
+  port: 9002
+
+mybatis-plus:
+  mapper-locations: classpath*:mybatis/*/*.xml
+  type-aliases-package: com.kkb.legou.*.po
+  configuration:
+    # 下划线驼峰转换
+    map-underscore-to-camel-case: true
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: false
+
+logging:
+  #file: demo.log
+  pattern:
+    console: "%d - %msg%n"
+  level:
+    org.springframework.web: debug
+    com.lxs: debug
+
+security:
+  oauth2:
+    resource:
+      jwt:
+        key-uri: http://localhost:9098/oauth/token_key
+    client:
+      access-token-uri: http://localhost:9098/oauth/token #令牌端点
+      user-authorization-uri: http://localhost:9098/oauth/authorize #授权端点
+      client-id: client
+      client-secret: 123456
+      grant-type: password
+      scope: read,write

@@ -1,0 +1,24 @@
+server:
+  port: 9010
+
+logging:
+  #file: demo.log
+  pattern:
+    console: "%d - %msg%n"
+  level:
+    org.springframework.web: debug
+    com.kkb: debug
+
+spring:
+  rabbitmq:
+    host: 110.42.216.234
+    port: 5672
+
+mq:
+  pay:
+    exchange:
+      order: exchange.pay.order
+    queue:
+      order: queue.pay.order
+    routing:
+      key: routing.pay.order

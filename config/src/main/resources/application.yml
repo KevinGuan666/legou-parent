@@ -1,0 +1,31 @@
+server:
+  port: 8888
+
+eureka:
+  client:
+    registry-fetch-interval-seconds: 5 #Server服务的列表只读备份，然后缓存在本地。默认30秒
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 10 # 10秒即过期
+    lease-renewal-interval-in-seconds: 5 # 5秒一次心跳
+
+spring:
+  profiles:
+    active: composite,default # 如果要使用本地配置文件，此处需增加composite。多profile时，谁在前面谁的配置优先级就高
+  cloud:
+    config:
+      server:
+        bootstrap: true # 提前加载配置文件，保证后续数据库连接正常启动
+        default-profile: default
+        default-label: master
+        composite: # 此配置为使用本地文件，与git脱离关系
+          - type: native
+            search-locations: /Users/guanyihang/IdeaProjects/legou-parent/config-repo
+        git: #git配置
+          uri: git@github.com:lxsong/legou-parent.git
+          username: lxsong
+          password: ######
+          search-paths: config-repo

@@ -1,0 +1,30 @@
+server:
+  port: 9011
+
+spring:
+  redis:
+    host: 110.42.216.234
+    port: 6379
+    password: 123456
+
+  jackson:
+    default-property-inclusion: always
+    date-format: yyyy-MM-dd HH:mm:00
+    time-zone: GMT+8
+
+mybatis-plus:
+  mapper-locations: classpath*:mybatis/*/*.xml
+  type-aliases-package: com.kkb.legou.*.po
+  configuration:
+    # 下划线驼峰转换
+    map-underscore-to-camel-case: true
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: false
+
+logging:
+  #file: demo.log
+  pattern:
+    console: "%d - %msg%n"
+  level:
+    org.springframework.web: debug
+    com.kkb: debug
